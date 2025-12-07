@@ -1,0 +1,18 @@
+ Datos
+data/raw/
+data/processed/
+data/clean/
+*.csv
+
+# Outputs
+outputs/
+logs/
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# OS
+.DS_Store
+Thumbs.db
