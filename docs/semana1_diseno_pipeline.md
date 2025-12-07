@@ -81,4 +81,4 @@ CSV raw → ADQUISICIÓN → INGESTA → LIMPIEZA → TRANSFORMACIÓN → VALIDA
 
 Este diseño permite procesar 100k+ transacciones de forma eficiente, escalable y mantenible. La estructura modular facilita agregar nuevas validaciones o fuentes de datos en el futuro.
 
-**Repositorio:** [Agregar link de GitHub cuando esté disponible]
+**Repositorio:** [Link de GitHub](https://github.com/estebanlr10/olist-data-pipeline)
