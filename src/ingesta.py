@@ -1,5 +1,10 @@
 import os
 import pandas as pd
+from pathlib import Path
+
+BASE_DIR = Path(__file__).parent.parent
+RAW_DIR = BASE_DIR / "data" / "raw"
+OUTPUT_DIR = BASE_DIR / "data" / "outputs"
 
 os.system("cls")
 
@@ -12,10 +17,10 @@ def lectura(dataset):
     
 #Función orquestadora
 def ejecutar_pipeline():
-    os.makedirs("../outputs",exist_ok=True)
-    clientes_csv("../Raw/olist_customers_dataset.csv")
-    items_csv("../Raw/olist_order_items_dataset.csv")
-    ordenes_csv("../Raw/olist_orders_dataset.csv")
+    os.makedirs(OUTPUT_DIR, exist_ok=True)
+    clientes_csv(RAW_DIR / "olist_customers_dataset.csv")
+    items_csv(RAW_DIR / "olist_order_items_dataset.csv")
+    ordenes_csv(RAW_DIR / "olist_orders_dataset.csv")
 
 #Limpieza clientes
 def clientes_csv(dataset):
@@ -63,8 +68,8 @@ def clientes_csv(dataset):
     df = df.drop(columns=['len_zip'])
 
     #Guardar cambios en un nuevo CSV y sin índice
-    df.to_csv("../Outputs/clientes_limpios.csv", index=False)
-    print("✅ Archivo: clientes_limpios.csv guardado en Outputs.")
+    df.to_csv(OUTPUT_DIR / "clientes_limpios.csv", index=False)
+    print("✅ Archivo: clientes_limpios.csv guardado en outputs.")
     print("=======================================================")
 
 #Limpieza productos
@@ -107,8 +112,8 @@ def items_csv(dataset):
 
 
     #Guardar cambios en un nuevo CSV y sin índice
-    df.to_csv("../Outputs/items_limpios.csv", index=False)
-    print("✅ Archivo: items_limpios.csv guardado en Outputs.")
+    df.to_csv(OUTPUT_DIR / "items_limpios.csv", index=False)
+    print("✅ Archivo: items_limpios.csv guardado en outputs.")
     print("=======================================================")
 
 #Limpieza ordenes
@@ -173,14 +178,11 @@ def ordenes_csv(dataset):
     else:
         print("✅ No hay problemas entre compra y fecha estimada de entrega.")
     
-    df.to_csv("../Outputs/ordenes_limpias.csv", index=False)
-    print("✅ Archivo: ordenes_limpias.csv guardado en Outputs.")
+    df.to_csv(OUTPUT_DIR / "ordenes_limpios.csv", index=False)
+
+    print("✅ Archivo: ordenes_limpias.csv guardado en outputs.")
     print("=======================================================")
 
 
 #Llamado de función orquestadora
 ejecutar_pipeline()
-
-
-
-
