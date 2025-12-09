@@ -6,6 +6,7 @@ from pathlib import Path
 from src.ingesta import ejecutar_pipeline as ejecutar_ingesta
 from src.transformaciones import ejecutar_transformaciones
 from src.modelo import ejecutar_modelo
+from src.validaciones import validar_calidad_datos
 
 # Configurar logging
 BASE_DIR = Path(__file__).parent
@@ -41,6 +42,11 @@ def ejecutar_pipeline_completo():
         logging.info("Etapa 3: Modelo Estrella")
         ejecutar_modelo()
         logging.info("✅ Modelo completado")
+
+        # Etapa 4: Validaciones de Calidad
+        logging.info("Etapa 4: Validaciones de Calidad")
+        validar_calidad_datos()
+        logging.info("✅ Validaciones completadas")
         
         logging.info("="*50)
         logging.info("✅ PIPELINE COMPLETADO EXITOSAMENTE")
